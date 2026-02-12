@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissor</title>
+</head>
+<body>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+        function getComputerChoice(){
+            const randomNumber = Math.floor(Math.random()*3);
+
+            if(randomNumber == 0){
+                return "rock";
+            }else if(randomNumber == 1){
+                return "paper";
+            }else{
+                return "scissor";
+            }
+        }
+
+        function getHumanChoice(){
+            const humanChoice = prompt("Enter rock, paper or scissor");
+            return humanChoice.toLowerCase();
+        }
+
+        function playRound(humanChoice, computerChoice){
+            if(humanChoice == "rock"  && computerChoice == "paper"){
+                console.log("You win! Rock beats Paper");
+                humanScore++;
+            }else if(humanChoice == "scissor" && computerChoice == "paper"){
+                console.log("You win! Scissor beats Paper");
+                humanScore++;
+            }
+
+            if(humanChoice == "paper"  && computerChoice == "rock"){
+                console.log("Computer win! Rock beats Paper");
+                humanScore++;
+                console.log(humanScore);
+            }else if(humanChoice == "paper" && computerChoice == "scissor"){
+                console.log("Computer win! Scissor beats Paper");
+                computerScore++;
+            }
+        }
+
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+
+        function playGame(){
+            playRound();
+            playRound();
+            playRound();
+            playRound();
+            playRound();
+
+            if(humanScore > computerScore){
+                console.log("You win!");
+            }else if(computerScore < humanScore){
+                console.log("Sorry! Computer won");
+            }else{
+                console.log("It's a tie");
+            }
+        }
+    </script>
+</body>
+</html>
